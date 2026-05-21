@@ -172,6 +172,16 @@ sample_image()
 
 The trainer does not need to know whether the model is GAN-based or diffusion-based. The adapter converts model-specific inputs and outputs into the shared legacy-learning interface.
 
+## Figures
+
+The overall legacy learning pipeline progressively fine-tunes a pretrained FFG model toward a user-defined legacy font while constraining glyph structure through the content preservation loss.
+
+![Legacy Learning overview](assets/figures/legacy_learning_overview.png)
+
+The qualitative results below illustrate step-wise style transformation across representative FFG models. Intermediate checkpoints are treated as usable mixed-style fonts rather than only transient training states.
+
+![Step-wise qualitative results](assets/figures/qualitative_results.png)
+
 ## Citation
 
 If this repository is useful for your research, please cite:
