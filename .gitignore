@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+outputs/*
+!outputs/.gitkeep
+checkpoints/*
+!checkpoints/.gitkeep
+data/images/
+*.pth
+*.pt
+*.ckpt
+*.log
+*.tmp

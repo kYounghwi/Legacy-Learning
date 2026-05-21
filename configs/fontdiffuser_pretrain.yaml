@@ -1,0 +1,63 @@
+run:
+  stage: pretrain
+  seed: 123
+  device: auto
+  output_dir: outputs/fontdiffuser_pretrain
+  max_steps: 440000
+  log_interval: 100
+  ckpt_interval: 40000
+  dry_run: false
+
+model:
+  name: fontdiffuser
+  repo_path: C:/Users/user/Desktop/FontDiffuser-main
+  image_size: 96
+  unet_channels: [64, 128, 256, 512]
+  content_encoder_downsample_size: 3
+  channel_attn: true
+  content_start_channel: 64
+  style_start_channel: 64
+  beta_scheduler: scaled_linear
+  drop_prob: 0.1
+  offset_weight: 0.5
+
+checkpoint:
+  base_checkpoint: null
+
+data:
+  manifest: data/manifests/pretrain_train.csv
+  image_size: 96
+  batch_size: 4
+  num_workers: 0
+  shuffle: true
+
+optimization:
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 0.00000001
+  max_grad_norm: 1.0
+
+legacy_learning:
+  enabled: false
+  preservation_weight: 0.0
+  alpha: 1.0
+  beta_schedule: cosine
+  fixed_beta: null
+  content_preservation_content_encoder_only: true
+  use_distance_term: true
+  use_direction_term: true
+
+sampling:
+  num_inference_steps: 20
+  algorithm_type: dpmsolver++
+  guidance_type: classifier-free
+  guidance_scale: 7.5
+  model_type: noise
+  order: 2
+  skip_type: time_uniform
+  method: multistep
+  correcting_x0_fn: null
+  t_start: null
+  t_end: null
