@@ -1,10 +1,15 @@
 # Legacy Learning
 
-Model-agnostic training and sampling skeleton for **Legacy Learning Strategy Based on Few-Shot Font Generation Models for Automatic Text Design**.
+This repository is the official implementation of the paper **[Legacy Learning Strategy Based on Few-Shot Font Generation Models for Automatic Text Design](https://doi.org/10.1016/j.ipm.2026.104721)**.
 
-This repository separates the legacy-learning method from each few-shot font generation (FFG) model. The shared code handles paired data loading, progressive content mixing, content preservation loss, checkpointing, and sampling entrypoints. Model-specific behavior is isolated in adapters.
+Legacy Learning is a model-agnostic fine-tuning strategy for few-shot font generation (FFG). The codebase separates the legacy-learning method from each FFG architecture: shared modules handle paired data loading, progressive content mixing, content preservation loss, checkpointing, and sampling, while model-specific behavior is isolated in adapters.
 
-> Status: FontDiffuser is implemented as the first working adapter. MX-Font, CF-Font, Diff-Font, and MSD-Font adapter files are included as placeholders.
+## Paper
+
+- Title: Legacy Learning Strategy Based on Few-Shot Font Generation Models for Automatic Text Design
+- Journal: Information Processing & Management, 63, 104721, 2026
+- DOI: [10.1016/j.ipm.2026.104721](https://doi.org/10.1016/j.ipm.2026.104721)
+- Authors: Younghwi Kim, Seok Chan Jeong, Dohee Kim, Sunghyun Sim
 
 ## Repository Layout
 
@@ -167,9 +172,18 @@ sample_image()
 
 The trainer does not need to know whether the model is GAN-based or diffusion-based. The adapter converts model-specific inputs and outputs into the shared legacy-learning interface.
 
-## Current Limitations
+## Citation
 
-- Only the FontDiffuser adapter is implemented.
-- This repository does not include datasets or pretrained checkpoints.
-- Evaluation scripts for FID, LPIPS, CKA, OCR, Dice, and Chamfer are not included yet.
-- Full paper reproduction requires adding the remaining model adapters and experiment scripts.
+If this repository is useful for your research, please cite:
+
+```bibtex
+@article{kim2026legacy,
+  title = {Legacy Learning Strategy Based on Few-Shot Font Generation Models for Automatic Text Design},
+  author = {Kim, Younghwi and Jeong, Seok Chan and Kim, Dohee and Sim, Sunghyun},
+  journal = {Information Processing & Management},
+  volume = {63},
+  pages = {104721},
+  year = {2026},
+  doi = {10.1016/j.ipm.2026.104721}
+}
+```
